@@ -97,8 +97,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "airavata:build:production",
+            "firebaseProject": "pushpaka-vimana",
+            "firebaseHostingSite": "pushpaka-vimana"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "42836286-b2b5-4698-9e5b-6c2a9fe1720e"
   }
 }
