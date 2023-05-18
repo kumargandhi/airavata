@@ -1,2 +1,2 @@
 # airavata
-Simple Angular project to create work orders.
+Simple Angular project to create work orders. Testing from local...
