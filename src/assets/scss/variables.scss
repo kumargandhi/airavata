@@ -1,0 +1,53 @@
+$font-family-name: 'Open Sans';
+$font-size-root: 13px;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Theme color variables
+$theme-white: #fff;
+$theme-primary: var(--theme-color-primary);
+$theme-primary-light: #8580d1;
+$theme-base: #323941;
+$theme-alt: #103058;
+
+// Gray color variables
+$theme-gray-darker: var(--theme-gray-darker);
+$theme-gray-dark: var(--theme-gray-dark);
+$theme-gray-base: var(--theme-gray-base);
+$theme-gray: var(--theme-gray);
+$theme-gray-light: var(--theme-gray-light);
+$theme-gray-lighter: var(--theme-gray-lighter);
+
+//Device definitions
+$mobile: '(min-width: 320px) and (max-width: 543px)';
+$tablet: '(min-width: 544px) and (max-width: 1024px)';
+$desktop-std: '(min-width: 1025px) and (max-width: 1366px)';
+$desktop-high: '(min-width: 1367px)';
+
+// Spacing Variables
+$space-xs: 10px;
+$space-base: 15px;
+$space-md: 20px;
+$space-lg: 25px;
+$space-xl: 30px;
+
+// Theme color https://www.schemecolor.com/summer-theme-color-scheme.php
+:root {
+    --theme-color-primary: #04C1E1;
+    --theme-color-primary-lighter: #75E4DE;
+    --theme-color-primary-light: #F3E803;
+    --panel-background: #f4f7fa;
+    --panel-header-background: #dde5eb;
+    --panel-footer-background: #f4f7fa;
+
+    // Gray color variables
+    --theme-gray-darker: #333; //night
+    --theme-gray-dark: #666; //acadia
+    --theme-gray-base: #c3c3c3; //silver
+    --theme-gray: #ededed; //whitesmoke
+    --theme-gray-light: #f5f5f5; //whitesand
+    --theme-gray-lighter: #f9f9f9; //alabaster
+}

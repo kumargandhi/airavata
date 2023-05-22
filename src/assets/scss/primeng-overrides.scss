@@ -1,0 +1,71 @@
+.p-panel .p-panel-content {
+    background: var(--panel-background);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.p-panel .p-panel-header {
+    background: var(--panel-header-background);
+}
+
+.p-panel .p-panel-footer {
+    background: var(--panel-footer-background);
+}
+
+.p-menubar .p-menuitem {
+    margin: 0 10px 0 10px;
+}
+
+.p-menubar
+.p-menubar-root-list
+> .p-menuitem
+> .p-menuitem-link.p-menuitem-link-active {
+    background: var(--theme-color-primary);
+
+    & > .p-menuitem-text {
+        color: #fff !important;
+    }
+}
+
+.p-menubar
+.p-menubar-root-list
+> .p-menuitem
+> .p-menuitem-link:not(.p-disabled):hover {
+    & > .p-menuitem-text {
+        color: var(--theme-gray-darker) !important;
+    }
+}
+
+.p-datatable-auto-layout > .p-datatable-wrapper > table,
+.p-datatable-responsive-scroll > .p-datatable-wrapper > table {
+    table-layout: fixed !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    overflow: hidden !important;
+    white-space: pre !important;
+}
+
+.p-dialog .p-dialog-header {
+    background: var(--panel-header-background);
+}
+
+.p-dialog .p-dialog-content {
+    padding: 1.5rem;
+    background: var(--panel-background);
+}
+
+.p-dialog .p-dialog-footer {
+    // padding: 1.5rem;
+    background: var(--panel-footer-background);
+}
+
+.p-field {
+    label {
+        margin-bottom: 5px;
+    }
+}
+
+.p-dropdown-min-width {
+    width: 220px;
+}

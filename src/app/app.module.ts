@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,18 +14,21 @@ import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoModule } from './common/components/logo/logo.module';
+import { CORE_PRIME_NG_MODULES } from './constants';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     LogoModule,
+    ...CORE_PRIME_NG_MODULES,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
