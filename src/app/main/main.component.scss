@@ -1,0 +1,11 @@
+.main-container {
+    display: flex;
+    overflow: hidden;
+    margin-left: 200px; /* Same as the width of the sidenav */
+
+    .router-container {
+        width: 100%;
+        min-width: 0;
+        // box-shadow: -3px 0 3px hsl(0deg 0% 40% / 10%);
+    }
+}

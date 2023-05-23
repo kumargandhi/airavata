@@ -1,0 +1,109 @@
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm fixed-top">
+    <div class="container-fluid p-0">
+        <a class="navbar-brand ms-4">{{ getHeaderTitle() }}</a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto me-3">
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle text-primary-app"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <!-- {{
+                            !user?.displayName ? user?.email : user?.displayName
+                        }} -->
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                (click)="onUserAction(UserActions.Profile)"
+                                ><i class="bi bi-person pe-1"></i>Profile</a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                (click)="
+                                    onUserAction(UserActions.Delete_Account)
+                                "
+                            ><i class="bi bi-person-x pe-1"></i>Delete Account</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-info-circle"
+                        class="p-button-rounded p-button-info p-button-text"
+                        (click)="onUserAction(UserActions.Info)"
+                    ></button>
+                </li>
+                <li class="nav-item">
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-power-off"
+                        class="p-button-rounded p-button-info p-button-text"
+                        (click)="onUserAction(UserActions.Logout)"
+                    ></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<p-dialog
+    [(visible)]="infoDialog"
+    [style]="{ width: '550px' }"
+    [header]="'Info'"
+    [modal]="true"
+    styleClass="p-fluid"
+>
+    <ng-template pTemplate="content">
+        <!-- <app-info></app-info> -->
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button
+            pButton
+            pRipple
+            label="Cancel"
+            icon="pi pi-times"
+            class="p-button-secondary"
+            (click)="infoDialog = false"
+        ></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+    <ng-template pTemplate="message">
+        <h5 [innerHTML]="confirmationMessage"></h5>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button
+            type="button"
+            pButton
+            icon="pi pi-times"
+            label="No"
+            (click)="cd.reject()"
+        ></button>
+        <button
+            type="button"
+            pButton
+            icon="pi pi-check"
+            label="Yes"
+            class="p-button-danger"
+            (click)="cd.accept()"
+        ></button>
+    </ng-template>
+</p-confirmDialog>
+
+<p-sidebar [(visible)]="showProfilePanel" position="right" styleClass="p-sidebar-md" [transitionOptions]="'250ms'" [dismissible]="true">
+    <!-- <app-user-profile [user]="user"></app-user-profile> -->
+</p-sidebar>

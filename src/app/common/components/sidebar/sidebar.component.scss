@@ -1,0 +1,52 @@
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(var(--theme-color-primary) 60%, var(--theme-color-primary-lighter));
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--theme-gray);
+    display: block;
+}
+
+.sidenav a:hover {
+    color: var(--theme-gray-base);
+}
+
+.sidenav a.active {
+    color: var(--theme-color-primary);
+    font-weight: bold;
+    background: var(--theme-gray);
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 14px;
+    }
+}
+
+.bottom-divider {
+    position: absolute;
+    top: 93%;
+    width: 100%;
+    border-top: 1px solid var(--theme-gray) !important;
+    padding-top: 10px;
+}
+
+span {
+    position: relative;
+    top: 50px;
+}

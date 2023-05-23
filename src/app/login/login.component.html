@@ -1,5 +1,4 @@
 <div id="page-container">
-
     <div class="login-content">
         <p-panel styleClass="p-panel">
             <ng-template pTemplate="header"> Login </ng-template>
@@ -18,10 +17,10 @@
                         formControlName="username"
                         class="mt-2"
                         [ngClass]="{
-                        'ng-invalid ng-dirty':
-                            form.controls['username'].dirty &&
-                            form.controls['username'].hasError('required')
-                    }"
+                            'ng-invalid ng-dirty':
+                                form.controls['username'].dirty &&
+                                form.controls['username'].hasError('required')
+                        }"
                         pInputText
                         autofocus
                     />
@@ -29,10 +28,10 @@
                         id="username-help"
                         class="p-error"
                         *ngIf="
-                        form.controls['username'].dirty &&
-                        form.controls['username'].hasError('required')
-                    "
-                    >Username is not available.</small
+                            form.controls['username'].dirty &&
+                            form.controls['username'].hasError('required')
+                        "
+                        >Username is not available.</small
                     >
                 </div>
                 <div class="p-field pb-3">
@@ -44,10 +43,10 @@
                         formControlName="password"
                         class="mt-2"
                         [ngClass]="{
-                        'ng-invalid ng-dirty':
-                            form.controls['password'].dirty &&
-                            form.controls['password'].hasError('required')
-                    }"
+                            'ng-invalid ng-dirty':
+                                form.controls['password'].dirty &&
+                                form.controls['password'].hasError('required')
+                        }"
                         pInputText
                         (keyup.enter)="login()"
                     />
@@ -55,10 +54,10 @@
                         id="password-help"
                         class="p-error"
                         *ngIf="
-                        form.controls['password'].dirty &&
-                        form.controls['password'].hasError('required')
-                    "
-                    >Password is not available.</small
+                            form.controls['password'].dirty &&
+                            form.controls['password'].hasError('required')
+                        "
+                        >Password is not available.</small
                     >
                 </div>
                 <button
@@ -104,5 +103,5 @@
     </div>
 </div>
 <div class="login-footer fs-6">
-        © Copyright {{ today.getFullYear() }}, Airavata. All rights reserved.
+    © Copyright {{ today.getFullYear() }}, Airavata. All rights reserved.
 </div>

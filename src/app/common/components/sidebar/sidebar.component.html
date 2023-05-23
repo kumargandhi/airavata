@@ -1,0 +1,12 @@
+<div class="sidenav">
+    <app-logo></app-logo>
+    <span>
+        <ng-container *ngFor="let item of menu">
+            <a [routerLink]="item.routerLink" [routerLinkActive]="'active'" (click)="pageChanged(item)">{{
+                item.label
+            }}</a>
+        </ng-container>
+    </span>
+    
+    <div class="bottom-divider"></div>
+</div>
