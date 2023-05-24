@@ -12,16 +12,17 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                     >
-                        <!-- {{
+                        {{
                             !user?.displayName ? user?.email : user?.displayName
-                        }} -->
+                        }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <a
                                 class="dropdown-item"
                                 (click)="onUserAction(UserActions.Profile)"
-                                ><i class="bi bi-person pe-1"></i>Profile</a>
+                                ><i class="bi bi-person pe-1"></i>Profile</a
+                            >
                         </li>
                         <li><hr class="dropdown-divider" /></li>
                         <li>
@@ -30,7 +31,9 @@
                                 (click)="
                                     onUserAction(UserActions.Delete_Account)
                                 "
-                            ><i class="bi bi-person-x pe-1"></i>Delete Account</a>
+                                ><i class="bi bi-person-x pe-1"></i>Delete
+                                Account</a
+                            >
                         </li>
                     </ul>
                 </li>
@@ -67,7 +70,7 @@
     styleClass="p-fluid"
 >
     <ng-template pTemplate="content">
-        <!-- <app-info></app-info> -->
+        <app-info></app-info>
     </ng-template>
     <ng-template pTemplate="footer">
         <button
@@ -104,6 +107,12 @@
     </ng-template>
 </p-confirmDialog>
 
-<p-sidebar [(visible)]="showProfilePanel" position="right" styleClass="p-sidebar-md" [transitionOptions]="'250ms'" [dismissible]="true">
-    <!-- <app-user-profile [user]="user"></app-user-profile> -->
+<p-sidebar
+    [(visible)]="showProfilePanel"
+    position="right"
+    styleClass="p-sidebar-md"
+    [transitionOptions]="'250ms'"
+    [dismissible]="true"
+>
+    <app-user-profile [user]="user"></app-user-profile>
 </p-sidebar>

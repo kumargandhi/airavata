@@ -1,7 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, User, signInWithEmailAndPassword } from '@angular/fire/auth';
-import {} from '@angular/fire';
 import { StorageService } from './storage.service';
 
 @Injectable({

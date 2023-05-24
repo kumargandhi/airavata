@@ -10,11 +10,15 @@ import { LogoModule } from '../common/components/logo/logo.module';
 import { WorkOrdersComponent } from '../work-orders/work-orders.component';
 import { SidebarComponent } from '../common/components/sidebar/sidebar.component';
 import { HeaderComponent } from '../common/components/header/header.component';
+import { InfoComponent } from '../common/components/info/info.component';
+import { UserProfileComponent } from '../common/components/user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
         SidebarComponent,
         HeaderComponent,
+        InfoComponent,
+        UserProfileComponent,
         MainComponent,
         DashboardComponent,
         WorkOrdersComponent,

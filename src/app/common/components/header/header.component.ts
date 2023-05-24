@@ -4,15 +4,14 @@ import {
     StorageService,
     StorageType,
 } from '../../services/storage.service';
-// import { IUser } from '../../interfaces/user.interface';
-// import { UserService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
+import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { ConfirmationService } from 'primeng/api';
 import { DestroyService } from '../../services/destroy.service';
-import { Store } from '@ngrx/store';
-// import { selectUserMgmt } from '../../state/selectors/app.selectors';
-import { takeUntil } from 'rxjs/operators';
-// import { getUser } from '../../state/actions/user.action';
+import { Store, ActionsSubject } from '@ngrx/store';
+import { takeUntil, skip } from 'rxjs/operators';
+import { USER_FETCHED, getUser } from '../../state/actions/user.action';
 
 enum UserActions {
     Profile = 'Profile',
@@ -30,7 +29,7 @@ enum UserActions {
 export class HeaderComponent implements OnInit {
     infoDialog = false;
 
-    // user: IUser;
+    user: IUser;
 
     readonly UserActions = UserActions;
 
@@ -38,25 +37,26 @@ export class HeaderComponent implements OnInit {
 
     showProfilePanel = false;
 
-    // readonly userMgmtUser$ = this.store.select(selectUserMgmt);
-
     constructor(
         private _storageService: StorageService,
         private _authService: AuthService,
-        // private _userService: UserService,
+        private _userService: UserService,
         private _confirmationService: ConfirmationService,
-        private _destroy$: DestroyService
+        private _destroy$: DestroyService,
+        private actionListener: ActionsSubject,
+        public store: Store
     ) {}
 
     ngOnInit(): void {
         // Dispatch action to get the user
-        // this.store.dispatch(getUser());
-
-        // this.userMgmtUser$.pipe(takeUntil(this._destroy$)).subscribe((data) => {
-        //     if (data) {
-        //         this.user = this._userService.currentUser = data.user;
-        //     }
-        // });
+        this.store.dispatch(getUser());
+        this.actionListener
+            .pipe(takeUntil(this._destroy$), skip(1))
+            .subscribe((action: any) => {
+                if (action.type === USER_FETCHED) {
+                    this.user = this._userService.currentUser = action.val;
+                }
+            });
     }
 
     onUserAction(action: UserActions) {
@@ -95,10 +95,9 @@ export class HeaderComponent implements OnInit {
     }
 
     getHeaderTitle() {
-        return "";
-        // return this._storageService.get<IUser>(
-        //     StorageKeys.Selected_Page,
-        //     StorageType.Local
-        // );
+        return this._storageService.get<IUser>(
+            StorageKeys.Selected_Page,
+            StorageType.Local
+        );
     }
 }
