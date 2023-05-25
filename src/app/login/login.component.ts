@@ -72,6 +72,6 @@ export class LoginComponent implements OnInit {
     }
 
     loginWithGoogle() {
-        // do google login
+        this._authService.signInWithGoogle();
     }
 }

@@ -22,11 +22,11 @@ import { LoginComponent } from './login/login.component';
 import { LogoModule } from './common/components/logo/logo.module';
 import { CORE_PRIME_NG_MODULES } from './constants';
 import { userMgmtReducer } from './common/state/reducers/user.reducer';
-
 import { UserEffects } from './common/state/effects/user.effects';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
-    declarations: [AppComponent, LoginComponent],
+    declarations: [AppComponent, LoginComponent, SignUpComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

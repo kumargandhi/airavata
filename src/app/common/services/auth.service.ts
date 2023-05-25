@@ -1,7 +1,15 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, User, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { StorageService } from './storage.service';
+import {
+    Auth,
+    User,
+    signInWithEmailAndPassword,
+    signOut,
+    signInWithPopup,
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
+} from '@angular/fire/auth';
+import { StorageKeys, StorageService, StorageType } from './storage.service';
 
 @Injectable({
     providedIn: 'root',
@@ -41,6 +49,46 @@ export class AuthService {
                             this.router.navigate(['/main']);
                         }, 500);
                     }
+                });
+            })
+            .catch((error) => {
+                window.alert(error.message);
+            });
+    }
+
+    signOut() {
+        return signOut(this._auth).then(() => {
+            localStorage.removeItem('user');
+            this._storageService.pop(
+                StorageKeys.Selected_Page,
+                StorageType.Local
+            );
+            this.router.navigate(['login']);
+        });
+    }
+
+    signInWithGoogle() {
+        signInWithPopup(this._auth, new GoogleAuthProvider())
+            .then(() => {
+                this.ngZone.run(() => {
+                    setTimeout(() => {
+                        this.router.navigate(['/main']);
+                    }, 500);
+                });
+            })
+            .catch((error) => {
+                window.alert(error.message);
+            });
+    }
+
+    signUp(email: string, password: string, username: string) {
+        createUserWithEmailAndPassword(this._auth, email, password)
+            .then(() => {
+                this.ngZone.run(() => {
+                    setTimeout(() => {
+                        // this.router.navigate(['/login']);
+                        console.log('User created successfully!');
+                    }, 500);
                 });
             })
             .catch((error) => {

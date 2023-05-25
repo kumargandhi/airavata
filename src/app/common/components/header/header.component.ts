@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit {
                 this._confirmationService.confirm({
                     message: this.confirmationMessage,
                     accept: () => {
-                        // this._authService.signOut();
+                        this._authService.signOut();
                     },
                 });
                 break;
