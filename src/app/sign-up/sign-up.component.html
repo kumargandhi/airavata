@@ -1,1 +1,78 @@
-<p>sign-up works!</p>
+<div id="page-container">
+    <div class="login-content">
+        <p-panel styleClass="p-panel">
+            <ng-template pTemplate="header"> Sign Up </ng-template>
+            <p-message
+                severity="error"
+                [text]="errorText"
+                *ngIf="errorText"
+            ></p-message>
+            <form [formGroup]="form" class="login-form p-fluid">
+                <div class="p-field pb-3">
+                    <label for="username">Email</label>
+                    <input
+                        id="username"
+                        type="username"
+                        aria-describedby="username-help"
+                        formControlName="username"
+                        class="mt-2"
+                        [ngClass]="{
+                            'ng-invalid ng-dirty':
+                                form.controls['username'].dirty &&
+                                form.controls['username'].hasError('required')
+                        }"
+                        pInputText
+                        autofocus
+                    />
+                    <small
+                        id="username-help"
+                        class="p-error"
+                        *ngIf="
+                            form.controls['username'].dirty &&
+                            form.controls['username'].hasError('required')
+                        "
+                        >Username is not available.</small
+                    >
+                </div>
+                <div class="p-field pb-3">
+                    <label for="password">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        aria-describedby="password-help"
+                        formControlName="password"
+                        class="mt-2"
+                        [ngClass]="{
+                            'ng-invalid ng-dirty':
+                                form.controls['password'].dirty &&
+                                form.controls['password'].hasError('required')
+                        }"
+                        pInputText
+                        (keyup.enter)="signup()"
+                    />
+                    <small
+                        id="password-help"
+                        class="p-error"
+                        *ngIf="
+                            form.controls['password'].dirty &&
+                            form.controls['password'].hasError('required')
+                        "
+                        >Password is not available.</small
+                    >
+                </div>
+                <button
+                    pButton
+                    type="button"
+                    label="Sign Up"
+                    (click)="signup()"
+                    [disabled]="!form.valid"
+                    [loading]="loading"
+                    class="p-button-primary"
+                ></button>
+            </form>
+        </p-panel>
+    </div>
+</div>
+<div class="login-footer fs-6">
+    © Copyright {{ today.getFullYear() }}, Airavata. All rights reserved.
+</div>

@@ -1,4 +1,10 @@
 <div id="page-container">
+    <p-message
+        severity="success"
+        text="Successfully signed up!, Please login to continue, thanks."
+        styleClass="signup-message"
+        *ngIf="isSignUpState"
+    ></p-message>
     <div class="login-content">
         <p-panel styleClass="p-panel">
             <ng-template pTemplate="header"> Login </ng-template>

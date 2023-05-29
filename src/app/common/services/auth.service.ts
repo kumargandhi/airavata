@@ -81,12 +81,12 @@ export class AuthService {
             });
     }
 
-    signUp(email: string, password: string, username: string) {
+    signUp(email: string, password: string) {
         createUserWithEmailAndPassword(this._auth, email, password)
             .then(() => {
                 this.ngZone.run(() => {
                     setTimeout(() => {
-                        // this.router.navigate(['/login']);
+                        this.router.navigate(['/login'], { queryParams: { signUp: true } });
                         console.log('User created successfully!');
                     }, 500);
                 });
