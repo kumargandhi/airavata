@@ -1,0 +1,11 @@
+#page-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    background-image: linear-gradient(
+        var(--theme-color-primary-dark) 60%,
+        var(--theme-color-primary-dark-light)
+    );
+}

@@ -12,7 +12,7 @@ import { AuthService } from '../common/services/auth.service';
 @Component({
     selector: 'app-sign-up',
     templateUrl: './sign-up.component.html',
-    styleUrls: ['../login/login.component.scss'],
+    styleUrls: ['../login/login.component.scss', './sign-up.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DestroyService],
 })
