@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
-    Firestore, doc, getDoc
+    Firestore, doc, getDoc, setDoc
 } from '@angular/fire/firestore';
 import { Subject } from 'rxjs';
+import { head } from 'lodash';
 import { IUser } from '../interfaces/user.interface';
 
 export const COLLECTION_USERS = 'users';
-export const COLLECTION_SURVEY_USER = 'survey_user';
 
 @Injectable({
     providedIn: 'root',
@@ -39,6 +39,18 @@ export class UserService {
     getUser(user: IUser) {
         const docRef = doc(this.firestore, COLLECTION_USERS, user.uid);
         return getDoc(docRef);
+    }
+
+    saveUser(user: IUser) {
+        const docRef = doc(this.firestore, COLLECTION_USERS, user.uid);
+        const userData: IUser = {
+            uid: user.uid,
+            email: user.email,
+            displayName: head(user.email.split('@')),
+            photoURL: null,
+            emailVerified: false,
+        };
+        return setDoc(docRef, userData);
     }
 
     // getUserDocumentFrommId(userId: string) {

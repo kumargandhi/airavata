@@ -10,6 +10,8 @@ import {
     createUserWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { StorageKeys, StorageService, StorageType } from './storage.service';
+import { UserService } from './user.service';
+import { IUser } from '../interfaces/user.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -21,7 +23,8 @@ export class AuthService {
         public router: Router,
         public ngZone: NgZone,
         private _auth: Auth,
-        private _storageService: StorageService
+        private _storageService: StorageService,
+        private _userService: UserService
     ) {
         _auth.onAuthStateChanged((user: User) => {
             if (user) {
@@ -83,9 +86,16 @@ export class AuthService {
 
     signUp(email: string, password: string) {
         createUserWithEmailAndPassword(this._auth, email, password)
-            .then(() => {
+            .then((result) => {
                 this.ngZone.run(() => {
                     setTimeout(() => {
+                        const user: IUser = {
+                            email: email,
+                            uid: result.user.uid
+                        };
+                        this._userService.saveUser(user);
+                        // TODO : When new user is created we need to send verification email.
+                        // this.sendVerificationMail();
                         this.router.navigate(['/login'], { queryParams: { signUp: true } });
                         console.log('User created successfully!');
                     }, 500);
