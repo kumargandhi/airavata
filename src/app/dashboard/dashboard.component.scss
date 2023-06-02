@@ -1,4 +1,4 @@
-@import 'src/assets/scss/variables';
+@import "src/assets/scss/variables";
 
 .total-container {
     display: flex;
@@ -8,10 +8,10 @@
     text-align: center;
 
     .total {
-        font-size: 2.429rem;
+        font-size: 6rem;
         font-weight: $font-weight-light;
-        line-height: 1.928rem;
-        color: $theme-primary;
+        line-height: 9rem;
+        color: $theme-primary-dark;
         margin-bottom: 10px;
     }
 

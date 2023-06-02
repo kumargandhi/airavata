@@ -43,14 +43,14 @@ export class HeaderComponent implements OnInit {
         private _userService: UserService,
         private _confirmationService: ConfirmationService,
         private _destroy$: DestroyService,
-        private actionListener: ActionsSubject,
-        public store: Store
+        private _actionListener: ActionsSubject,
+        private _store: Store
     ) {}
 
     ngOnInit(): void {
         // Dispatch action to get the user
-        this.store.dispatch(getUser());
-        this.actionListener
+        this._store.dispatch(getUser());
+        this._actionListener
             .pipe(takeUntil(this._destroy$), skip(1))
             .subscribe((action: any) => {
                 if (action.type === USER_FETCHED) {

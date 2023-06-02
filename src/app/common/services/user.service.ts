@@ -5,8 +5,7 @@ import {
 import { Subject } from 'rxjs';
 import { head } from 'lodash';
 import { IUser } from '../interfaces/user.interface';
-
-export const COLLECTION_USERS = 'users';
+import { COLLECTION_USERS } from './firebase.db';
 
 @Injectable({
     providedIn: 'root',

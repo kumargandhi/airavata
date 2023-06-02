@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap, map } from 'rxjs/operators';
 import { getUser, saveUser } from '../actions/user.action';
@@ -37,7 +36,6 @@ export class UserEffects {
 
     constructor(
         private actions$: Actions,
-        private store: Store,
         private _storageService: StorageService,
         private _userService: UserService
     ) {}

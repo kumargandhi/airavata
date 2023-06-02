@@ -24,6 +24,8 @@ import { CORE_PRIME_NG_MODULES } from './constants';
 import { userMgmtReducer } from './common/state/reducers/user.reducer';
 import { UserEffects } from './common/state/effects/user.effects';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { workOrderMgmtReducer } from './common/state/reducers/work-order.reducer';
+import { WorkOrderEffects } from './common/state/effects/work-order.effects';
 
 @NgModule({
     declarations: [AppComponent, LoginComponent, SignUpComponent],
@@ -44,9 +46,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
         StoreModule.forRoot({
             router: routerReducer,
             userMgmt: userMgmtReducer,
+            workOrderMgmt: workOrderMgmtReducer,
         }),
         StoreRouterConnectingModule.forRoot(),
-        EffectsModule.forRoot([UserEffects]),
+        EffectsModule.forRoot([UserEffects, WorkOrderEffects]),
     ],
     providers: [
         [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
