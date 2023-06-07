@@ -8,3 +8,16 @@ export const MENU_ITEMS = [
         routerLink: ['work-orders'],
     },
 ];
+
+export enum PRIORITIES {
+    High = 'High',
+    Medium = 'Medium',
+    Low = 'Low'
+}
+
+export enum STATUSES {
+    New = 'New',
+    Assigned = 'Assigned',
+    Completed = 'Completed',
+    Archived = 'Archived'
+}

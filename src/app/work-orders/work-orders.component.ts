@@ -13,6 +13,7 @@ import {
 } from '../common/state/actions/work-order.actions';
 import { DestroyService } from '../common/services/destroy.service';
 import { IWorkOrder } from '../common/interfaces/work-order.interface';
+import { PRIORITIES, STATUSES } from '../main/constants';
 
 @Component({
     selector: 'app-work-orders',
@@ -24,6 +25,8 @@ import { IWorkOrder } from '../common/interfaces/work-order.interface';
 export class WorkOrdersComponent implements OnInit {
     loading = false;
     workOrders: IWorkOrder[];
+    workOrder: IWorkOrder;
+    showWorkOrderDialog = false;
 
     constructor(
         private _destroy$: DestroyService,
@@ -47,5 +50,30 @@ export class WorkOrdersComponent implements OnInit {
             });
     }
 
-    editWorkOrder(wo: IWorkOrder) {}
+    getPriorityTagClass(priority: string) {
+        if (priority === PRIORITIES.High) {
+            return 'danger';
+        } else if (priority === PRIORITIES.Medium) {
+            return 'warning';
+        } else {
+            return 'info';
+        }
+    }
+
+    getStatusTagClass(status: string) {
+        if (status === STATUSES.Completed) {
+            return 'success';
+        } else if (status === STATUSES.Archived) {
+            return 'warning';
+        } else {
+            return 'info';
+        }
+    }
+
+    editWorkOrder(wo: IWorkOrder) {
+        this.workOrder = wo;
+        this.showWorkOrderDialog = true;
+    }
+
+    hideDialog() {}
 }
