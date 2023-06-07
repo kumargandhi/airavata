@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { Store, ActionsSubject } from '@ngrx/store';
 import { takeUntil, skip } from 'rxjs/operators';
 
@@ -13,18 +18,23 @@ import { IWorkOrder } from '../common/interfaces/work-order.interface';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [DestroyService],
 })
 export class DashboardComponent implements OnInit {
+    loading = false;
     workOrders: IWorkOrder[];
 
     constructor(
         private _destroy$: DestroyService,
         private _actionListener: ActionsSubject,
+        private _cd: ChangeDetectorRef,
         private _store: Store
     ) {}
 
     ngOnInit(): void {
-        // Dispatch action to get the user
+        this.loading = true;
+        // Dispatch action to get the work orders.
         this._store.dispatch(getWorkOrders());
         this._actionListener
             .pipe(takeUntil(this._destroy$), skip(1))
@@ -32,6 +42,8 @@ export class DashboardComponent implements OnInit {
                 if (action.type === WOS_FETCHED) {
                     this.workOrders = action.val;
                 }
+                this.loading = false;
+                this._cd.detectChanges();
             });
     }
 }
