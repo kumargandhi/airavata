@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { MENU_ITEMS } from './constants';
 import { DestroyService } from '../common/services/destroy.service';
 import {

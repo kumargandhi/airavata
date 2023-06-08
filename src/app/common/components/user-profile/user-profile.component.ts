@@ -6,7 +6,6 @@ import {
     OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { head } from 'lodash';
 import { takeUntil } from 'rxjs/operators';
 import { IUser } from '../../interfaces/user.interface';
 import { DestroyService } from '../../services/destroy.service';

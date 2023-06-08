@@ -24,7 +24,8 @@
       "dom"
     ],
     "skipLibCheck": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

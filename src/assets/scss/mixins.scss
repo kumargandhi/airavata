@@ -1,0 +1,62 @@
+// Device Mixins
+// --------------------------------------------------------------------------
+//This mixin is used to define styles particularly for tablets. See breakpoint specification in  variables.scss
+@mixin mobile {
+    @media #{$mobile} {
+        @content;
+    }
+}
+
+//This mixin is used to define styles particularly for tablets. See breakpoint specification in  variables.scss
+@mixin tablet {
+    @media #{$tablet} {
+        @content;
+    }
+}
+
+//This mixin is used to define styles particularly for smaller desktops. See breakpoint specification in  variables.scss
+@mixin desktop-std {
+    @media #{$desktop-std} {
+        @content;
+    }
+}
+
+//This mixin is used to define styles particularly for large desktops. See breakpoint specification in  variables.scss
+@mixin desktop-high {
+    @media #{$desktop-high} {
+        @content;
+    }
+}
+// Device Mixins
+
+// Common Mixins
+@mixin descriptive-text {
+    @include mobile {
+        font-size: 0.93rem;
+        font-weight: $font-weight-normal;
+        line-height: 1.214rem;
+    }
+    @include tablet {
+        font-size: 0.93rem;
+        font-weight: $font-weight-normal;
+        line-height: 1.214rem;
+    }
+    @include desktop-std {
+        font-size: 0.786rem;
+        font-weight: $font-weight-normal;
+        line-height: 1.071rem;
+    }
+    @include desktop-high {
+        font-size: 0.93rem;
+        font-weight: $font-weight-normal;
+        line-height: 1.214rem;
+    }
+}
+
+@mixin flex-container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-flow: column;
+    text-align: center;
+}

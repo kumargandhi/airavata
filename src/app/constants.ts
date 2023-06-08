@@ -21,6 +21,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { DividerModule } from 'primeng/divider';
+import { ChartModule } from 'primeng/chart';
 
 export const CORE_PRIME_NG_MODULES = [
     InputTextModule,
@@ -54,5 +55,6 @@ export const MAIN_PRIME_NG_MODULES = [
     CheckboxModule,
     SidebarModule,
     TabViewModule,
-    DividerModule
+    DividerModule,
+    ChartModule
 ];

@@ -1,17 +1,14 @@
 @import "src/assets/scss/variables";
+@import "src/assets/scss/mixins";
 
 .total-container {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    flex-flow: column;
-    text-align: center;
+    @include flex-container;
 
     .total {
         font-size: 6rem;
         font-weight: $font-weight-light;
         line-height: 9rem;
-        color: $theme-primary-dark;
+        color: $purple-500;
         margin-bottom: 10px;
     }
 
@@ -20,4 +17,8 @@
         font-weight: $font-weight-bold;
         line-height: 2.128rem;
     }
+}
+
+.chart-container {
+    @include flex-container;
 }

@@ -3,7 +3,7 @@ import {
     Firestore, doc, getDoc, setDoc
 } from '@angular/fire/firestore';
 import { Subject } from 'rxjs';
-import { head } from 'lodash';
+import head from 'lodash/head';
 import { IUser } from '../interfaces/user.interface';
 import { COLLECTION_USERS } from './firebase.db';
 

@@ -24,6 +24,14 @@
                     height: '300px'
                 }"
             >
+                <div class="chart-container">
+                    <p-chart
+                        type="doughnut"
+                        [data]="data"
+                        [options]="options"
+                        [style]="{'height': '220px', 'display': 'flex', 'justify-content': 'center'}"
+                    ></p-chart>
+                </div>
             </p-card>
         </div>
     </div>

@@ -4,106 +4,54 @@
 @import "assets/scss/variables";
 @import "assets/scss/primeng-overrides";
 @import "assets/scss/bootstrap-overrides";
+@import "assets/scss/mixins";
 
 html,
 body {
-  font-size: $font-size-root !important;
-  font-family: $font-family-name !important;
-  direction: ltr;
+    font-size: $font-size-root !important;
+    font-family: $font-family-name !important;
+    direction: ltr;
 }
 
 html,
 body {
-  margin: 0;
-  overflow: hidden;
-  width: 100vw !important;
-  height: 100vh !important;
-}
-
-// Device Mixins
-// --------------------------------------------------------------------------
-//This mixin is used to define styles particularly for tablets. See breakpoint specification in  variables.scss
-@mixin mobile {
-  @media #{$mobile} {
-    @content;
-  }
-}
-
-//This mixin is used to define styles particularly for tablets. See breakpoint specification in  variables.scss
-@mixin tablet {
-  @media #{$tablet} {
-    @content;
-  }
-}
-
-//This mixin is used to define styles particularly for smaller desktops. See breakpoint specification in  variables.scss
-@mixin desktop-std {
-  @media #{$desktop-std} {
-    @content;
-  }
-}
-
-//This mixin is used to define styles particularly for large desktops. See breakpoint specification in  variables.scss
-@mixin desktop-high {
-  @media #{$desktop-high} {
-    @content;
-  }
-}
-
-@mixin descriptive-text {
-  @include mobile {
-    font-size: 0.93rem;
-    font-weight: $font-weight-normal;
-    line-height: 1.214rem;
-  }
-  @include tablet {
-    font-size: 0.93rem;
-    font-weight: $font-weight-normal;
-    line-height: 1.214rem;
-  }
-  @include desktop-std {
-    font-size: 0.786rem;
-    font-weight: $font-weight-normal;
-    line-height: 1.071rem;
-  }
-  @include desktop-high {
-    font-size: 0.93rem;
-    font-weight: $font-weight-normal;
-    line-height: 1.214rem;
-  }
+    margin: 0;
+    overflow: hidden;
+    width: 100vw !important;
+    height: 100vh !important;
 }
 
 .descriptive-text {
-  @include descriptive-text;
-  color: $theme-gray-dark;
+    @include descriptive-text;
+    color: $theme-gray-dark;
 }
 
 //This is the main application container ID, includes the application header
 #page-container {
-  margin: 0;
-  padding: 64px 1rem 1rem 1rem;
-  height: 100vh;
-  overflow-y: scroll;
-  background: var(--theme-gray);
-  // box-shadow: -3px 0 3px hsl(0deg 0% 40% / 10%);
+    margin: 0;
+    padding: 64px 1rem 1rem 1rem;
+    height: 100vh;
+    overflow-y: scroll;
+    background: var(--theme-gray);
+    // box-shadow: -3px 0 3px hsl(0deg 0% 40% / 10%);
 
-  & > #page-title {
-    background-color: inherit;
-    margin: 0 !important;
-    padding-right: $space-base;
-    padding-bottom: $space-base;
-  }
+    & > #page-title {
+        background-color: inherit;
+        margin: 0 !important;
+        padding-right: $space-base;
+        padding-bottom: $space-base;
+    }
 
-  & > #page-title.gray {
-    background-color: $theme-gray-light !important;
-  }
+    & > #page-title.gray {
+        background-color: $theme-gray-light !important;
+    }
 
-  & > .page-section {
-    width: 100%;
-    height: calc(100% - 64px);
-  }
+    & > .page-section {
+        width: 100%;
+        height: calc(100% - 64px);
+    }
 }
 
 .text-primary-app {
-  color: $theme-primary !important;
+    color: $theme-primary !important;
 }

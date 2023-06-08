@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { head } from 'lodash';
+import head from 'lodash/head';
 import { MENU_ITEMS } from '../../../main/constants';
 import { AuthService } from '../../services/auth.service';
 import {
