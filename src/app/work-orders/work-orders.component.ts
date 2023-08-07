@@ -3,6 +3,7 @@ import {
     OnInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
+    ViewChild,
 } from '@angular/core';
 import { Store, ActionsSubject } from '@ngrx/store';
 import { takeUntil, skip } from 'rxjs/operators';
@@ -14,6 +15,7 @@ import {
 import { DestroyService } from '../common/services/destroy.service';
 import { IWorkOrder } from '../common/interfaces/work-order.interface';
 import { PRIORITIES, STATUSES } from '../main/constants';
+import { AddEditWorkOrderComponent } from './add-edit-work-order/add-edit-work-order.component';
 
 @Component({
     selector: 'app-work-orders',
@@ -27,6 +29,8 @@ export class WorkOrdersComponent implements OnInit {
     workOrders: IWorkOrder[];
     workOrder: IWorkOrder;
     showWorkOrderDialog = false;
+    @ViewChild('addEditWOComponent')
+    addEditWOComponent: AddEditWorkOrderComponent;
 
     constructor(
         private _destroy$: DestroyService,

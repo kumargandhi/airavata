@@ -1,0 +1,28 @@
+<div class="wo-form">
+    <form [formGroup]="form" class="p-fluid">
+        <div class="p-field mb-3">
+            <label for="tradeName">Trade Name</label>
+            <input
+                type="text"
+                pInputText
+                id="tradeName"
+                required
+                autofocus
+                formControlName="tradeName"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['tradeName'].dirty &&
+                        form.controls['tradeName'].hasError('required')
+                }"
+            />
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['tradeName'].dirty &&
+                    form.controls['tradeName'].hasError('required')
+                "
+                >Trade Name is required.</small
+            >
+        </div>
+    </form>
+</div>

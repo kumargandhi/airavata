@@ -12,6 +12,7 @@ import { SidebarComponent } from '../common/components/sidebar/sidebar.component
 import { HeaderComponent } from '../common/components/header/header.component';
 import { InfoComponent } from '../common/components/info/info.component';
 import { UserProfileComponent } from '../common/components/user-profile/user-profile.component';
+import { AddEditWorkOrderComponent } from '../work-orders/add-edit-work-order/add-edit-work-order.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UserProfileComponent } from '../common/components/user-profile/user-pro
         MainComponent,
         DashboardComponent,
         WorkOrdersComponent,
+        AddEditWorkOrderComponent
     ],
     imports: [
         CommonModule,

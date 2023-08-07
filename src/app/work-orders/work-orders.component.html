@@ -84,12 +84,12 @@
     <p-dialog
         [(visible)]="showWorkOrderDialog"
         [style]="{ width: '550px' }"
-        [header]="workOrder ? 'Update User' : 'Add User'"
+        [header]="workOrder ? 'Update Work Order' : 'Add Work Order'"
         [modal]="true"
         styleClass="p-fluid"
     >
         <ng-template pTemplate="content">
-            <h1>Add the workOrder wizard component here!!</h1>
+            <app-add-edit-work-order #addEditWOComponent [workOrder]="workOrder"></app-add-edit-work-order>
         </ng-template>
         <ng-template pTemplate="footer">
             <button
