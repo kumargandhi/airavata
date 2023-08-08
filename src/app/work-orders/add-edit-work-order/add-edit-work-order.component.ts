@@ -5,8 +5,8 @@ import {
     OnInit,
     Input,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
+import { MenuItem } from 'primeng/api';
 import { IWorkOrder } from 'src/app/common/interfaces/work-order.interface';
 import { DestroyService } from 'src/app/common/services/destroy.service';
 
@@ -17,51 +17,47 @@ import { DestroyService } from 'src/app/common/services/destroy.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DestroyService],
 })
-export class AddEditWorkOrderComponent {
-    form: FormGroup;
-
-    loading = false;
-
-    _errorText = '';
+export class AddEditWorkOrderComponent implements OnInit {
     _workOrder: IWorkOrder;
 
+    steps: MenuItem[];
+    activeStepIndex = '1';
+
     constructor(
-        private _fb: FormBuilder,
         private _destroy$: DestroyService,
         private _cd: ChangeDetectorRef
-    ) {}
+    ) {
+        this.steps = [
+            {
+                label: 'Details',
+                id: 'details',
+                tabindex: '1',
+            },
+            {
+                label: 'Estimate',
+                id: 'estimate',
+                tabindex: '2',
+            },
+            {
+                label: 'Action',
+                id: 'action',
+                tabindex: '3',
+            },
+            {
+                label: 'Summary',
+                id: 'summary',
+                tabindex: '4',
+            },
+        ];
+    }
 
     @Input() set workOrder(value: IWorkOrder) {
         this._workOrder = value;
     }
 
-    ngOnInit(): void {
-        this.formCreate();
-        this.formSubscribe();
-        this._cd.markForCheck();
-    }
+    ngOnInit(): void {}
 
-    formCreate() {
-        this.form = this._fb.group({
-            tradeName: [this._workOrder?.tradeName, Validators.required],
-        });
-    }
-
-    formSubscribe() {
-        this.form.valueChanges
-            .pipe(takeUntil(this._destroy$))
-            .subscribe((data) => this.onValueChanged(data));
-    }
-
-    onValueChanged(data?: any) {
-        if (!data) {
-            return;
-        }
-        this.loading = false;
-        this.errorText = '';
-    }
-
-    set errorText(value: string) {
-        this._errorText = value;
+    activeIndexChanged($event: any) {
+        console.log($event);
     }
 }

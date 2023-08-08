@@ -1,3 +1,11 @@
-.user-form {
+.wo-container {
     width: 100%;
+}
+
+:host ::ng-deep .p-steps .p-steps-item .p-menuitem-link {
+    background: unset;
+}
+
+:host ::ng-deep .p-steps {
+    margin-bottom: 20px;
 }

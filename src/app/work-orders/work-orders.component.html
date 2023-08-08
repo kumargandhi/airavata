@@ -7,6 +7,7 @@
                 label="New"
                 icon="pi pi-plus"
                 class="p-button-success mr-2"
+                (click)="newWorkOrder()"
             ></button>
         </ng-template>
     </p-toolbar>
@@ -79,6 +80,11 @@
                     ></button>
                 </td>
             </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                {{ getTableSummary() }}
+            </div>
         </ng-template>
     </p-table>
     <p-dialog

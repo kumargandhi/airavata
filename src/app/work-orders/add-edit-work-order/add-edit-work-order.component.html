@@ -1,28 +1,16 @@
-<div class="wo-form">
-    <form [formGroup]="form" class="p-fluid">
-        <div class="p-field mb-3">
-            <label for="tradeName">Trade Name</label>
-            <input
-                type="text"
-                pInputText
-                id="tradeName"
-                required
-                autofocus
-                formControlName="tradeName"
-                [ngClass]="{
-                    'ng-invalid ng-dirty':
-                        form.controls['tradeName'].dirty &&
-                        form.controls['tradeName'].hasError('required')
-                }"
-            />
-            <small
-                class="p-error"
-                *ngIf="
-                    form.controls['tradeName'].dirty &&
-                    form.controls['tradeName'].hasError('required')
-                "
-                >Trade Name is required.</small
-            >
-        </div>
-    </form>
+<div class="wo-container">
+    <p-steps
+        [model]="steps"
+        [readonly]="true"
+        (activeIndexChange)="activeIndexChanged($event)"
+    ></p-steps>
+    <div class="wo-step" [ngSwitch]="activeStepIndex">
+        <app-details-step
+            *ngSwitchCase="'1'"
+            [workOrder]="_workOrder"
+        ></app-details-step>
+        <app-estimate-step *ngSwitchCase="'2'"></app-estimate-step>
+        <app-action-step *ngSwitchCase="'3'"></app-action-step>
+        <app-summary-step *ngSwitchCase="'4'"></app-summary-step>
+    </div>
 </div>

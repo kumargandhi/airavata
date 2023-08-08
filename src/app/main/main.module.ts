@@ -13,6 +13,10 @@ import { HeaderComponent } from '../common/components/header/header.component';
 import { InfoComponent } from '../common/components/info/info.component';
 import { UserProfileComponent } from '../common/components/user-profile/user-profile.component';
 import { AddEditWorkOrderComponent } from '../work-orders/add-edit-work-order/add-edit-work-order.component';
+import { DetailsStepComponent } from '../work-orders/add-edit-work-order/components/details-step/details-step.component';
+import { EstimateStepComponent } from '../work-orders/add-edit-work-order/components/estimate-step/estimate-step.component';
+import { ActionStepComponent } from '../work-orders/add-edit-work-order/components/action-step/action-step.component';
+import { SummaryStepComponent } from '../work-orders/add-edit-work-order/components/summary-step/summary-step.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +27,11 @@ import { AddEditWorkOrderComponent } from '../work-orders/add-edit-work-order/ad
         MainComponent,
         DashboardComponent,
         WorkOrdersComponent,
-        AddEditWorkOrderComponent
+        AddEditWorkOrderComponent,
+        DetailsStepComponent,
+        EstimateStepComponent,
+        ActionStepComponent,
+        SummaryStepComponent
     ],
     imports: [
         CommonModule,

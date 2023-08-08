@@ -1,3 +1,7 @@
+// Step 1 - Details; tradeName, status, priority
+// Step 2 - Estimate; estimation, manPower, scheduleDate
+// Step 3 - <Only edit> Action; actionTaken, completionData, paid
+// Step 3 - Summary
 export interface IWorkOrder {
     actionTaken: string;
     completionDate: Date;

@@ -74,10 +74,24 @@ export class WorkOrdersComponent implements OnInit {
         }
     }
 
+    getTableSummary() {
+        return `Total ${this.workOrders ? this.workOrders.length : 0} ${
+            this.workOrders && this.workOrders.length > 1 ? 'Users' : 'User'
+        }`;
+    }
+
     editWorkOrder(wo: IWorkOrder) {
         this.workOrder = wo;
         this.showWorkOrderDialog = true;
     }
 
-    hideDialog() {}
+    hideDialog() {
+        this.workOrder = null;
+        this.showWorkOrderDialog = false;
+    }
+
+    newWorkOrder() {
+        this.workOrder = null;
+        this.showWorkOrderDialog = true;
+    }
 }
