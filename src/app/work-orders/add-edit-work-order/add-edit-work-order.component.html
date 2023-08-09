@@ -2,15 +2,36 @@
     <p-steps
         [model]="steps"
         [readonly]="true"
+        [activeIndex]="activeStepIndex"
         (activeIndexChange)="activeIndexChanged($event)"
     ></p-steps>
-    <div class="wo-step" [ngSwitch]="activeStepIndex">
+    <div class="wo-steps" [ngSwitch]="activeStepIndex">
         <app-details-step
-            *ngSwitchCase="'1'"
+            *ngSwitchCase="'0'"
             [workOrder]="_workOrder"
         ></app-details-step>
-        <app-estimate-step *ngSwitchCase="'2'"></app-estimate-step>
-        <app-action-step *ngSwitchCase="'3'"></app-action-step>
-        <app-summary-step *ngSwitchCase="'4'"></app-summary-step>
+        <app-estimate-step *ngSwitchCase="'1'"></app-estimate-step>
+        <app-action-step *ngSwitchCase="'2'"></app-action-step>
+        <app-summary-step *ngSwitchCase="'3'"></app-summary-step>
+    </div>
+    <div class="wo-footer">
+        <button
+            pButton
+            pRipple
+            label="Previous"
+            icon="pi pi-angle-left"
+            class="p-button-secondary"
+            [disabled]="isPreviousBtnDisabled"
+            (click)="previousStep()"
+        ></button>
+        <button
+            pButton
+            pRipple
+            label="Next"
+            icon="pi pi-angle-right"
+            class="p-button-primary"
+            [disabled]="isNextBtnDisabled"
+            (click)="nextStep()"
+        ></button>
     </div>
 </div>

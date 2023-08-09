@@ -10,9 +10,9 @@ export const MENU_ITEMS = [
 ];
 
 export enum PRIORITIES {
-    High = 'High',
+    Low = 'Low',
     Medium = 'Medium',
-    Low = 'Low'
+    High = 'High'
 }
 
 export enum STATUSES {

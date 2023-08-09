@@ -21,7 +21,10 @@ export class AddEditWorkOrderComponent implements OnInit {
     _workOrder: IWorkOrder;
 
     steps: MenuItem[];
-    activeStepIndex = '1';
+    activeStepIndex = 0;
+
+    isPreviousBtnDisabled = true;
+    isNextBtnDisabled = false;
 
     constructor(
         private _destroy$: DestroyService,
@@ -31,22 +34,22 @@ export class AddEditWorkOrderComponent implements OnInit {
             {
                 label: 'Details',
                 id: 'details',
-                tabindex: '1',
+                tabindex: '0',
             },
             {
                 label: 'Estimate',
                 id: 'estimate',
-                tabindex: '2',
+                tabindex: '1',
             },
             {
                 label: 'Action',
                 id: 'action',
-                tabindex: '3',
+                tabindex: '2',
             },
             {
                 label: 'Summary',
                 id: 'summary',
-                tabindex: '4',
+                tabindex: '3',
             },
         ];
     }
@@ -59,5 +62,30 @@ export class AddEditWorkOrderComponent implements OnInit {
 
     activeIndexChanged($event: any) {
         console.log($event);
+        this.toggleButtons();
+    }
+
+    previousStep() {
+        this.activeStepIndex--;
+        this.toggleButtons();
+    }
+
+    nextStep() {
+        this.activeStepIndex++;
+        this.toggleButtons();
+    }
+
+    toggleButtons() {
+        if (this.activeStepIndex <= 0) {
+            this.isPreviousBtnDisabled = true;
+            this.isNextBtnDisabled = false;
+        } else {
+            this.isPreviousBtnDisabled = false;
+            this.isNextBtnDisabled = false;
+        }
+        if (this.activeStepIndex === 3) {
+            this.isPreviousBtnDisabled = false;
+            this.isNextBtnDisabled = true;
+        }
     }
 }

@@ -75,7 +75,7 @@
                         class="p-button-rounded p-button-success mr-2"
                         (click)="editWorkOrder(wo)"
                         pTooltip="Edit Work Order"
-                        tooltipPosition="top"
+                        tooltipPosition="left"
                         placeholder="Top"
                     ></button>
                 </td>
@@ -89,23 +89,13 @@
     </p-table>
     <p-dialog
         [(visible)]="showWorkOrderDialog"
-        [style]="{ width: '550px' }"
+        [style]="{ width: '650px', height: '560px' }"
         [header]="workOrder ? 'Update Work Order' : 'Add Work Order'"
         [modal]="true"
         styleClass="p-fluid"
     >
         <ng-template pTemplate="content">
             <app-add-edit-work-order #addEditWOComponent [workOrder]="workOrder"></app-add-edit-work-order>
-        </ng-template>
-        <ng-template pTemplate="footer">
-            <button
-                pButton
-                pRipple
-                label="Cancel"
-                icon="pi pi-times"
-                class="p-button-secondary"
-                (click)="hideDialog()"
-            ></button>
         </ng-template>
     </p-dialog>
 </div>

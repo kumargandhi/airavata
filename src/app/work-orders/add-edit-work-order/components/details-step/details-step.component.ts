@@ -7,8 +7,11 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
+import { head } from 'lodash';
 import { IWorkOrder } from 'src/app/common/interfaces/work-order.interface';
 import { DestroyService } from 'src/app/common/services/destroy.service';
+import { STATUSES, PRIORITIES } from 'src/app/main/constants';
+import { IType } from 'src/app/common/interfaces/type.interface';
 
 @Component({
     selector: 'app-details-step',
@@ -25,6 +28,9 @@ export class DetailsStepComponent {
     _errorText = '';
     _workOrder: IWorkOrder;
 
+    statuses: IType[] = [];
+    priorities: IType[] = [];
+
     constructor(
         private _fb: FormBuilder,
         private _destroy$: DestroyService,
@@ -36,6 +42,18 @@ export class DetailsStepComponent {
     }
 
     ngOnInit(): void {
+        Object.values(STATUSES).forEach((value) => {
+            this.statuses.push({
+                id: value,
+                label: value,
+            });
+        });
+        Object.values(PRIORITIES).forEach((value) => {
+            this.priorities.push({
+                id: value,
+                label: value,
+            });
+        });
         this.formCreate();
         this.formSubscribe();
         this._cd.markForCheck();
@@ -44,6 +62,18 @@ export class DetailsStepComponent {
     formCreate() {
         this.form = this._fb.group({
             tradeName: [this._workOrder?.tradeName, Validators.required],
+            status: [
+                !this._workOrder?.status
+                    ? head(this.statuses).id
+                    : this._workOrder?.status,
+                Validators.required,
+            ],
+            priority: [
+                !this._workOrder?.priority
+                    ? head(this.priorities).id
+                    : this._workOrder?.priority,
+                Validators.required,
+            ],
         });
     }
 

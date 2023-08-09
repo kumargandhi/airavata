@@ -1,5 +1,8 @@
+@import 'src/assets/scss/variables';
+
 .wo-container {
     width: 100%;
+    height: 100%;
 }
 
 :host ::ng-deep .p-steps .p-steps-item .p-menuitem-link {
@@ -8,4 +11,30 @@
 
 :host ::ng-deep .p-steps {
     margin-bottom: 20px;
+}
+
+.wo-steps {
+    height: 72%;
+}
+
+.wo-footer {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--panel-footer-background);;
+    min-height: 60px;
+    button {
+        max-width: 120px;
+    }
+    .p-button-secondary {
+        float: left;
+    }
+    .p-button-primary {
+        float: right;
+    }
+}
+
+.step-container {
+    padding: 15px;
+    background: var(--panel-header-background);
 }

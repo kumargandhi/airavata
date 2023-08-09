@@ -1,4 +1,6 @@
-<div class="details-step-container">
+<div class="step-container">
+    <h5>Details information</h5>
+    <p>Enter the details of the work order.</p>
     <form [formGroup]="form" class="p-fluid">
         <div class="p-field mb-3">
             <label for="tradeName">Trade Name</label>
@@ -23,6 +25,28 @@
                 "
                 >Trade Name is required.</small
             >
+        </div>
+        <div class="p-field mb-3">
+            <label>Status</label>
+            <p-dropdown
+                id="status"
+                [options]="statuses"
+                optionLabel="label"
+                optionValue="id"
+                formControlName="status"
+                styleClass="p-dropdown-min-width"
+            ></p-dropdown>
+        </div>
+        <div class="p-field mb-3">
+            <label>priority</label>
+            <p-dropdown
+                id="priority"
+                [options]="priorities"
+                optionLabel="label"
+                optionValue="id"
+                formControlName="priority"
+                styleClass="p-dropdown-min-width"
+            ></p-dropdown>
         </div>
     </form>
 </div>
