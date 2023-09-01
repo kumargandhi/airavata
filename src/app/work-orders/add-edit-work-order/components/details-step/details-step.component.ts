@@ -20,7 +20,7 @@ import { IType } from 'src/app/common/interfaces/type.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DestroyService],
 })
-export class DetailsStepComponent {
+export class DetailsStepComponent implements OnInit {
     form: FormGroup;
 
     loading = false;

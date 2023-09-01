@@ -1,1 +1,54 @@
-<p>estimate-step works!</p>
+<div class="step-container">
+    <h5>Details information</h5>
+    <p>Enter the details of the work order.</p>
+    <form [formGroup]="form" class="p-fluid">
+        <div class="p-field mb-3">
+            <label for="estimation">Trade Name</label>
+            <input
+                type="number"
+                pInputText
+                id="estimation"
+                required
+                autofocus
+                formControlName="estimation"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['estimation'].dirty &&
+                        form.controls['estimation'].hasError('required')
+                }"
+            />
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['estimation'].dirty &&
+                    form.controls['estimation'].hasError('required')
+                "
+                >Trade Name is required.</small
+            >
+        </div>
+        <div class="p-field mb-3">
+            <label for="manPower">Man power</label>
+            <input
+                type="number"
+                pInputText
+                id="manPower"
+                required
+                autofocus
+                formControlName="manPower"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['manPower'].dirty &&
+                        form.controls['manPower'].hasError('required')
+                }"
+            />
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['manPower'].dirty &&
+                    form.controls['manPower'].hasError('required')
+                "
+                >Man power is required.</small
+            >
+        </div>
+    </form>
+</div>

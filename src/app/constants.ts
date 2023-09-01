@@ -1,4 +1,5 @@
 import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
@@ -26,6 +27,7 @@ import { StepsModule } from 'primeng/steps'
 
 export const CORE_PRIME_NG_MODULES = [
     InputTextModule,
+    InputNumberModule,
     PanelModule,
     ButtonModule,
     MessagesModule,
@@ -35,6 +37,7 @@ export const CORE_PRIME_NG_MODULES = [
 
 export const MAIN_PRIME_NG_MODULES = [
     InputTextModule,
+    InputNumberModule,
     PanelModule,
     ButtonModule,
     MessagesModule,
