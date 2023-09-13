@@ -23,7 +23,8 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { DividerModule } from 'primeng/divider';
 import { ChartModule } from 'primeng/chart';
-import { StepsModule } from 'primeng/steps'
+import { StepsModule } from 'primeng/steps';
+import { CalendarModule } from 'primeng/calendar';
 
 export const CORE_PRIME_NG_MODULES = [
     InputTextModule,
@@ -61,5 +62,6 @@ export const MAIN_PRIME_NG_MODULES = [
     TabViewModule,
     DividerModule,
     ChartModule,
-    StepsModule
+    StepsModule,
+    CalendarModule,
 ];

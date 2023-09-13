@@ -1,1 +1,73 @@
-<p>action-step works!</p>
+<div class="step-container">
+    <h5>Take action on the Work Order</h5>
+    <p>Update the Work Order if the job is in-progress or completed.</p>
+    <form [formGroup]="form" class="p-fluid">
+        <div class="p-field mb-3">
+            <label for="actionTaken">Action Taken</label>
+            <input
+                type="number"
+                pInputText
+                id="actionTaken"
+                required
+                autofocus
+                formControlName="actionTaken"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['actionTaken'].dirty &&
+                        form.controls['actionTaken'].hasError('required')
+                }"
+            />
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['actionTaken'].dirty &&
+                    form.controls['actionTaken'].hasError('required')
+                "
+                >Action taken is required.</small
+            >
+        </div>
+        <div class="p-field mb-3">
+            <label for="paid">Amount Paid</label>
+            <input
+                type="number"
+                pInputText
+                id="paid"
+                required
+                formControlName="paid"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['paid'].dirty &&
+                        form.controls['paid'].hasError('required')
+                }"
+            />
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['paid'].dirty &&
+                    form.controls['paid'].hasError('required')
+                "
+                >Amount Paid is required.</small
+            >
+        </div>
+        <div class="p-field mb-3">
+            <label for="completionDate">Completion Date</label>
+            <p-calendar
+                id="completionDate"
+                formControlName="completionDate"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['completionDate'].dirty &&
+                        form.controls['completionDate'].hasError('required')
+                }"
+            ></p-calendar>
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['completionDate'].dirty &&
+                    form.controls['completionDate'].hasError('required')
+                "
+                >Completion Date is required.</small
+            >
+        </div>
+    </form>
+</div>

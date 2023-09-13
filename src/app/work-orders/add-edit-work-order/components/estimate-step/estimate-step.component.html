@@ -3,7 +3,7 @@
     <p>Enter the details of the work order.</p>
     <form [formGroup]="form" class="p-fluid">
         <div class="p-field mb-3">
-            <label for="estimation">Trade Name</label>
+            <label for="estimation">Estimation</label>
             <input
                 type="number"
                 pInputText
@@ -23,7 +23,7 @@
                     form.controls['estimation'].dirty &&
                     form.controls['estimation'].hasError('required')
                 "
-                >Trade Name is required.</small
+                >Estimation is required.</small
             >
         </div>
         <div class="p-field mb-3">
@@ -33,7 +33,6 @@
                 pInputText
                 id="manPower"
                 required
-                autofocus
                 formControlName="manPower"
                 [ngClass]="{
                     'ng-invalid ng-dirty':
@@ -48,6 +47,26 @@
                     form.controls['manPower'].hasError('required')
                 "
                 >Man power is required.</small
+            >
+        </div>
+        <div class="p-field mb-3">
+            <label for="scheduleDate">Schedule Date</label>
+            <p-calendar
+                id="scheduleDate"
+                formControlName="scheduleDate"
+                [ngClass]="{
+                    'ng-invalid ng-dirty':
+                        form.controls['scheduleDate'].dirty &&
+                        form.controls['scheduleDate'].hasError('required')
+                }"
+            ></p-calendar>
+            <small
+                class="p-error"
+                *ngIf="
+                    form.controls['scheduleDate'].dirty &&
+                    form.controls['scheduleDate'].hasError('required')
+                "
+                >Schedule Date is required.</small
             >
         </div>
     </form>

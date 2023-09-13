@@ -14,8 +14,13 @@
             *ngSwitchCase="'1'"
             [workOrder]="_workOrder"
         ></app-estimate-step>
-        <app-action-step *ngSwitchCase="'2'"></app-action-step>
-        <app-summary-step *ngSwitchCase="'3'"></app-summary-step>
+        <app-action-step
+            *ngSwitchCase="'2'"
+            [workOrder]="_workOrder"
+        ></app-action-step>
+        <app-summary-step
+            *ngSwitchCase="'3'"
+        ></app-summary-step>
     </div>
     <div class="wo-footer">
         <button

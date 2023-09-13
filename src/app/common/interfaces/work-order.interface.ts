@@ -4,14 +4,14 @@
 // Step 3 - Summary
 export interface IWorkOrder {
     actionTaken: string;
-    completionDate: Date;
+    completionDate: any;
     creationDate: Date;
     estimation: number;
     manPower: number;
     paid: number;
     // High, Medium, Low
     priority: string;
-    scheduleDate: Date;
+    scheduleDate: any;
     // New, Assigned, Completed, Archived
     status: string;
     tradeName: string;

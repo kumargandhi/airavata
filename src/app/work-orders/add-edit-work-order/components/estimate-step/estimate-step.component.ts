@@ -25,6 +25,8 @@ export class EstimateStepComponent implements OnInit {
     _errorText = '';
     _workOrder: IWorkOrder;
 
+    scheduleDate: Date;
+
     constructor(
         private _fb: FormBuilder,
         private _destroy$: DestroyService,
@@ -42,10 +44,16 @@ export class EstimateStepComponent implements OnInit {
     }
 
     formCreate() {
+        if (this._workOrder) {
+            this.scheduleDate = new Date(
+                this._workOrder?.scheduleDate.seconds * 1000
+            );
+        }
+        this.scheduleDate = new Date();
         this.form = this._fb.group({
             estimation: [this._workOrder?.estimation, Validators.required],
             manPower: [this._workOrder?.manPower, Validators.required],
-            // scheduleDate: [this._workOrder?.scheduleDate, Validators.required],
+            scheduleDate: [this.scheduleDate, Validators.required],
         });
     }
 
@@ -61,6 +69,9 @@ export class EstimateStepComponent implements OnInit {
         }
         this.loading = false;
         this.errorText = '';
+        this._workOrder.estimation = data.estimation;
+        this._workOrder.manPower = data.manPower;
+        this._workOrder.priority = data.priority;
     }
 
     set errorText(value: string) {

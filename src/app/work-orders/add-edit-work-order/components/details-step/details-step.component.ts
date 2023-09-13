@@ -89,6 +89,9 @@ export class DetailsStepComponent implements OnInit {
         }
         this.loading = false;
         this.errorText = '';
+        this._workOrder.tradeName = data.tradeName;
+        this._workOrder.status = data.status;
+        this._workOrder.priority = data.priority;
     }
 
     set errorText(value: string) {
