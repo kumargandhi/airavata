@@ -5,7 +5,6 @@ import {
     OnInit,
     Input,
 } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
 import { IWorkOrder } from 'src/app/common/interfaces/work-order.interface';
 import { DestroyService } from 'src/app/common/services/destroy.service';
@@ -25,6 +24,8 @@ export class AddEditWorkOrderComponent implements OnInit {
 
     isPreviousBtnDisabled = true;
     isNextBtnDisabled = false;
+
+    isLastStep = false;
 
     constructor(
         private _destroy$: DestroyService,
@@ -73,9 +74,11 @@ export class AddEditWorkOrderComponent implements OnInit {
     nextStep() {
         this.activeStepIndex++;
         this.toggleButtons();
+        this._cd.markForCheck();
     }
 
     toggleButtons() {
+        this.isLastStep = false;
         if (this.activeStepIndex <= 0) {
             this.isPreviousBtnDisabled = true;
             this.isNextBtnDisabled = false;
@@ -86,6 +89,9 @@ export class AddEditWorkOrderComponent implements OnInit {
         if (this.activeStepIndex === 3) {
             this.isPreviousBtnDisabled = false;
             this.isNextBtnDisabled = true;
+            // For submit enable
+            this.isLastStep = true;
+            this.isNextBtnDisabled = false;
         }
     }
 }

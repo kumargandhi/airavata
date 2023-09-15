@@ -4,6 +4,7 @@ import { IWorkOrder } from '../../interfaces/work-order.interface';
 
 export const WO_ = '[USER]';
 export const WOS_FETCHED = `${WO_}s fetched`;
+export const UPDATE_WO = `${WO_}s updated`;
 
 export const workOrdersFetched = createAction(
     WOS_FETCHED,

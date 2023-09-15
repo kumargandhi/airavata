@@ -20,6 +20,7 @@
         ></app-action-step>
         <app-summary-step
             *ngSwitchCase="'3'"
+            [workOrder]="_workOrder"
         ></app-summary-step>
     </div>
     <div class="wo-footer">
@@ -35,9 +36,9 @@
         <button
             pButton
             pRipple
-            label="Next"
-            icon="pi pi-angle-right"
-            class="p-button-primary"
+            label="{{ isLastStep ? 'Save' : 'Next' }}"
+            icon="pi {{ isLastStep ? '' : 'pi-angle-right' }}"
+            [ngClass]="{'p-button-primary': !isLastStep, 'p-button-success': isLastStep}"
             [disabled]="isNextBtnDisabled"
             (click)="nextStep()"
         ></button>

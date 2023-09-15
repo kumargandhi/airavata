@@ -1,1 +1,34 @@
-<p>summary-step works!</p>
+<div class="step-container">
+    <h5>Summary</h5>
+    <p>Creating Work Order with the below information.</p>
+    <div class="grid">
+        <div class="col">
+            <label>Trade name</label>
+            <label class="ml-2 font-bold">{{ _workOrder.tradeName }}</label>
+        </div>
+        <div class="col">
+            <label>Status</label>
+            <label class="ml-2 font-bold">{{ _workOrder.status }}</label>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col">
+            <label>Priority</label>
+            <label class="ml-2 font-bold">{{ _workOrder.priority }}</label>
+        </div>
+        <div class="col">
+            <label>Status</label>
+            <label class="ml-2 font-bold">{{ _workOrder.estimation }}</label>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col">
+            <label>Man Power</label>
+            <label class="ml-2 font-bold">{{ _workOrder.manPower }}</label>
+        </div>
+        <div class="col">
+            <label>Schedule Date</label>
+            <label class="ml-2 font-bold">{{ getScheduleDate() }}</label>
+        </div>
+    </div>
+</div>

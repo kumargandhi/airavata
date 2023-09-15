@@ -25,8 +25,6 @@ export class ActionStepComponent {
     _errorText = '';
     _workOrder: IWorkOrder;
 
-    completionDate: Date;
-
     constructor(
         private _fb: FormBuilder,
         private _destroy$: DestroyService,
@@ -44,16 +42,10 @@ export class ActionStepComponent {
     }
 
     formCreate() {
-        if (this._workOrder) {
-            this.completionDate = new Date(
-                this._workOrder?.completionDate.seconds * 1000
-            );
-        }
-        this.completionDate = new Date();
         this.form = this._fb.group({
             actionTaken: [this._workOrder?.actionTaken, Validators.required],
             paid: [this._workOrder?.paid, Validators.required],
-            completionDate: [this.completionDate, Validators.required],
+            completionDate: [this._workOrder?.completionDate, Validators.required],
         });
     }
 
@@ -69,6 +61,9 @@ export class ActionStepComponent {
         }
         this.loading = false;
         this.errorText = '';
+        this._workOrder.actionTaken = data.actionTaken;
+        this._workOrder.paid = data.paid;
+        this._workOrder.completionDate = data.completionDate;
     }
 
     set errorText(value: string) {

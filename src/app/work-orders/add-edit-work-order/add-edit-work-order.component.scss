@@ -32,10 +32,25 @@
     .p-button-primary {
         float: right;
     }
+    .p-button-success{
+        float: right;
+    }
 }
 
 .step-container {
     padding: 15px;
     background: var(--panel-header-background);
     height: 100%;
+}
+
+.p-field {
+    width: 40%;
+}
+
+.text-area-div {
+    width: 85%;
+}
+
+.date-div {
+    width: 25%;
 }

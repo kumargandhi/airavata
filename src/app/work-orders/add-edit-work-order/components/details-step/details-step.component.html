@@ -2,11 +2,10 @@
     <h5>Details information</h5>
     <p>Enter the details of the work order.</p>
     <form [formGroup]="form" class="p-fluid">
-        <div class="p-field mb-3">
+        <div class="p-field mb-3 text-area-div">
             <label for="tradeName">Trade Name</label>
-            <input
-                type="text"
-                pInputText
+            <textarea
+                pInputTextarea
                 id="tradeName"
                 required
                 autofocus
@@ -16,7 +15,7 @@
                         form.controls['tradeName'].dirty &&
                         form.controls['tradeName'].hasError('required')
                 }"
-            />
+            ></textarea>
             <small
                 class="p-error"
                 *ngIf="

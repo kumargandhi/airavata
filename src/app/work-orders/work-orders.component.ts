@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Store, ActionsSubject } from '@ngrx/store';
 import { takeUntil, skip } from 'rxjs/operators';
+import { Timestamp } from "@angular/fire/firestore";
 
 import {
     WOS_FETCHED,
@@ -17,6 +18,7 @@ import { IWorkOrder } from '../common/interfaces/work-order.interface';
 import { PRIORITIES, STATUSES } from '../main/constants';
 import { AddEditWorkOrderComponent } from './add-edit-work-order/add-edit-work-order.component';
 import { cloneDeep } from 'lodash';
+import { convertWorkOrderTimeStampsToDates } from '../common/utils';
 
 @Component({
     selector: 'app-work-orders',
@@ -82,7 +84,7 @@ export class WorkOrdersComponent implements OnInit {
     }
 
     editWorkOrder(wo: IWorkOrder) {
-        this.workOrder = cloneDeep(wo);
+        this.workOrder = convertWorkOrderTimeStampsToDates(wo);
         this.showWorkOrderDialog = true;
     }
 

@@ -2,11 +2,10 @@
     <h5>Take action on the Work Order</h5>
     <p>Update the Work Order if the job is in-progress or completed.</p>
     <form [formGroup]="form" class="p-fluid">
-        <div class="p-field mb-3">
+        <div class="p-field mb-3 text-area-div">
             <label for="actionTaken">Action Taken</label>
-            <input
-                type="number"
-                pInputText
+            <textarea
+                pInputTextarea
                 id="actionTaken"
                 required
                 autofocus
@@ -16,7 +15,7 @@
                         form.controls['actionTaken'].dirty &&
                         form.controls['actionTaken'].hasError('required')
                 }"
-            />
+            ></textarea>
             <small
                 class="p-error"
                 *ngIf="
@@ -49,7 +48,7 @@
                 >Amount Paid is required.</small
             >
         </div>
-        <div class="p-field mb-3">
+        <div class="p-field mb-3 date-div">
             <label for="completionDate">Completion Date</label>
             <p-calendar
                 id="completionDate"

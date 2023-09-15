@@ -18,6 +18,7 @@ export class WorkOrderEffects {
                     const wos: IWorkOrder[] = [];
                     docs.docs.forEach((doc) => {
                         const item = doc.data();
+                        item.id = doc.id;
                         wos.push(item);
                     });
                     return workOrdersFetched({ val: wos });
