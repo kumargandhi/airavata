@@ -25,6 +25,7 @@ import { DividerModule } from 'primeng/divider';
 import { ChartModule } from 'primeng/chart';
 import { StepsModule } from 'primeng/steps';
 import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
 
 export const CORE_PRIME_NG_MODULES = [
     InputTextModule,
@@ -64,4 +65,5 @@ export const MAIN_PRIME_NG_MODULES = [
     ChartModule,
     StepsModule,
     CalendarModule,
+    ToastModule,
 ];

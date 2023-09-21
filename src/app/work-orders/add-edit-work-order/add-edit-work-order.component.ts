@@ -4,6 +4,8 @@ import {
     Component,
     OnInit,
     Input,
+    EventEmitter,
+    Output,
 } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { IWorkOrder } from 'src/app/common/interfaces/work-order.interface';
@@ -26,6 +28,12 @@ export class AddEditWorkOrderComponent implements OnInit {
     isNextBtnDisabled = false;
 
     isLastStep = false;
+
+    @Output()
+    updateWorkOrder: EventEmitter<IWorkOrder> = new EventEmitter();
+
+    @Input()
+    creatingWorkOrder: boolean;
 
     constructor(
         private _destroy$: DestroyService,
@@ -73,7 +81,12 @@ export class AddEditWorkOrderComponent implements OnInit {
 
     nextStep() {
         this.activeStepIndex++;
-        this.toggleButtons();
+        if (!this.isLastStep) {
+            this.toggleButtons();
+        } else {
+            // Update the work order
+            this.updateWorkOrder.emit(this._workOrder);
+        }
         this._cd.markForCheck();
     }
 

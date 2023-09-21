@@ -3,6 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs/operators';
 import {
     getWorkOrders,
+    updateWorkOrder,
+    workOrderUpdated,
     workOrdersFetched,
 } from '../actions/work-order.actions';
 import { IWorkOrder } from '../../interfaces/work-order.interface';
@@ -22,6 +24,17 @@ export class WorkOrderEffects {
                         wos.push(item);
                     });
                     return workOrdersFetched({ val: wos });
+                });
+            })
+        );
+    });
+
+    updateWorkOrder$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(updateWorkOrder),
+            mergeMap((action) => {
+                return this._workOrderService.updateWorkOrder(action.val).then(() => {
+                    return workOrderUpdated();
                 });
             })
         );

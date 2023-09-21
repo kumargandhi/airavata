@@ -1,1 +1,5 @@
-@import 'src/app/work-orders/add-edit-work-order/add-edit-work-order.component.scss';
+@import "src/app/work-orders/add-edit-work-order/add-edit-work-order.component.scss";
+
+hr.update {
+    border-top: 1px solid red;
+}

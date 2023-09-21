@@ -31,4 +31,19 @@
             <label class="ml-2 font-bold">{{ getScheduleDate() }}</label>
         </div>
     </div>
+    <hr class="update" *ngIf="!creatingWorkOrder">
+    <div class="grid" *ngIf="!creatingWorkOrder">
+        <div class="col">
+            <label>Action Taken</label>
+            <label class="ml-2 font-bold">{{ _workOrder.actionTaken }}</label>
+        </div>
+        <div class="col">
+            <label>Completion Date</label>
+            <label class="ml-2 font-bold">{{ getCompletionDate() }}</label>
+        </div>
+        <div class="col">
+            <label>Paid</label>
+            <label class="ml-2 font-bold">{{ _workOrder.paid }}</label>
+        </div>
+    </div>
 </div>

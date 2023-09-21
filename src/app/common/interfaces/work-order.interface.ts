@@ -1,6 +1,6 @@
 // Step 1 - Details; tradeName, status, priority
 // Step 2 - Estimate; estimation, manPower, scheduleDate
-// Step 3 - <Only edit> Action; actionTaken, completionData, paid
+// Step 3 - <Only edit> Action; actionTaken, completionDate, paid
 
 import { Timestamp } from "@angular/fire/firestore";
 
