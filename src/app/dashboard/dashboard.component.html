@@ -12,13 +12,13 @@
                     <div class="total">
                         {{ workOrders?.length }}
                     </div>
-                    <div class="label">Work Orders</div>
+                    <div class="label">Work Order{{ workOrders?.length > 1 ? 's':'' }}</div>
                 </div>
             </p-card>
         </div>
         <div class="col-6">
             <p-card
-                header="Work Orders"
+                header="Work Orders by Priority"
                 [style]="{
                     width: '100%',
                     height: '300px'

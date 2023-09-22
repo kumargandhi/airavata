@@ -86,7 +86,7 @@ export class WorkOrdersComponent implements OnInit {
 
     getTableSummary() {
         return `Total ${this.workOrders ? this.workOrders.length : 0} ${
-            this.workOrders && this.workOrders.length > 1 ? 'Users' : 'User'
+            this.workOrders && this.workOrders.length > 1 ? 'Work Orders' : 'Work Order'
         }`;
     }
 
