@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs/operators';
 import {
+    createWorkOrder,
     getWorkOrders,
     updateWorkOrder,
+    workOrderCreated,
     workOrderUpdated,
     workOrdersFetched,
 } from '../actions/work-order.actions';
@@ -35,6 +37,17 @@ export class WorkOrderEffects {
             mergeMap((action) => {
                 return this._workOrderService.updateWorkOrder(action.val).then(() => {
                     return workOrderUpdated();
+                });
+            })
+        );
+    });
+
+    createWorkOrder$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(createWorkOrder),
+            mergeMap((action) => {
+                return this._workOrderService.createWorkOrder(action.val).then(() => {
+                    return workOrderCreated();
                 });
             })
         );

@@ -21,3 +21,26 @@ export enum STATUSES {
     Completed = 'Completed',
     Archived = 'Archived'
 }
+
+export const WORK_ORDER_WIZARD_STEPS_MENU = [
+    {
+        label: 'Details',
+        id: 'details',
+        tabindex: '0',
+    },
+    {
+        label: 'Estimate',
+        id: 'estimate',
+        tabindex: '1',
+    },
+    {
+        label: 'Action',
+        id: 'action',
+        tabindex: '2',
+    },
+    {
+        label: 'Summary',
+        id: 'summary',
+        tabindex: '3',
+    },
+];

@@ -5,25 +5,46 @@
         [activeIndex]="activeStepIndex"
         (activeIndexChange)="activeIndexChanged($event)"
     ></p-steps>
-    <div class="wo-steps" [ngSwitch]="activeStepIndex">
-        <app-details-step
-            *ngSwitchCase="'0'"
-            [workOrder]="_workOrder"
-        ></app-details-step>
-        <app-estimate-step
-            *ngSwitchCase="'1'"
-            [workOrder]="_workOrder"
-        ></app-estimate-step>
-        <app-action-step
-            *ngSwitchCase="'2'"
-            [workOrder]="_workOrder"
-        ></app-action-step>
-        <app-summary-step
-            *ngSwitchCase="'3'"
-            [workOrder]="_workOrder"
-            [creatingWorkOrder]="creatingWorkOrder"
-        ></app-summary-step>
-    </div>
+    <span [ngSwitch]="creatingWorkOrder">
+        <ng-container *ngSwitchCase="true">
+            <div class="wo-steps" [ngSwitch]="activeStepIndex">
+                <app-details-step
+                    *ngSwitchCase="'0'"
+                    [workOrder]="_workOrder"
+                ></app-details-step>
+                <app-estimate-step
+                    *ngSwitchCase="'1'"
+                    [workOrder]="_workOrder"
+                ></app-estimate-step>
+                <app-summary-step
+                    *ngSwitchCase="'2'"
+                    [workOrder]="_workOrder"
+                    [creatingWorkOrder]="creatingWorkOrder"
+                ></app-summary-step>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="false">
+            <div class="wo-steps" [ngSwitch]="activeStepIndex">
+                <app-details-step
+                    *ngSwitchCase="'0'"
+                    [workOrder]="_workOrder"
+                ></app-details-step>
+                <app-estimate-step
+                    *ngSwitchCase="'1'"
+                    [workOrder]="_workOrder"
+                ></app-estimate-step>
+                <app-action-step
+                    *ngSwitchCase="'2'"
+                    [workOrder]="_workOrder"
+                ></app-action-step>
+                <app-summary-step
+                    *ngSwitchCase="'3'"
+                    [workOrder]="_workOrder"
+                    [creatingWorkOrder]="creatingWorkOrder"
+                ></app-summary-step>
+            </div>
+        </ng-container>
+    </span>
     <div class="wo-footer">
         <button
             pButton
@@ -39,7 +60,10 @@
             pRipple
             label="{{ isLastStep ? 'Save' : 'Next' }}"
             icon="pi {{ isLastStep ? '' : 'pi-angle-right' }}"
-            [ngClass]="{'p-button-primary': !isLastStep, 'p-button-success': isLastStep}"
+            [ngClass]="{
+                'p-button-primary': !isLastStep,
+                'p-button-success': isLastStep
+            }"
             [disabled]="isNextBtnDisabled"
             (click)="nextStep()"
         ></button>

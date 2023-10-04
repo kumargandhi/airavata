@@ -9,8 +9,10 @@ import { Store, ActionsSubject } from '@ngrx/store';
 import { takeUntil, skip } from 'rxjs/operators';
 
 import {
+    CREATED_WO,
     UPDATED_WO,
     WOS_FETCHED,
+    createWorkOrder,
     getWorkOrders,
     updateWorkOrder,
 } from '../common/state/actions/work-order.actions';
@@ -18,7 +20,7 @@ import { DestroyService } from '../common/services/destroy.service';
 import { IWorkOrder } from '../common/interfaces/work-order.interface';
 import { PRIORITIES, STATUSES } from '../main/constants';
 import { AddEditWorkOrderComponent } from './add-edit-work-order/add-edit-work-order.component';
-import { convertWorkOrderTimeStampsToDates } from '../common/utils';
+import { convertWorkOrderTimeStampsToDates, initWorkOrder } from '../common/utils';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -57,6 +59,10 @@ export class WorkOrdersComponent implements OnInit {
                 } else if (action.type === UPDATED_WO) {
                     this.hideDialog();
                     this.messageService.add({severity:'success', summary: 'Success', detail: 'Work Order updated successfully!'});
+                    this._store.dispatch(getWorkOrders());
+                } else if (action.type === CREATED_WO) {
+                    this.hideDialog();
+                    this.messageService.add({severity:'success', summary: 'Success', detail: 'Work Order created successfully!'});
                     this._store.dispatch(getWorkOrders());
                 }
                 this.loading = false;
@@ -103,11 +109,15 @@ export class WorkOrdersComponent implements OnInit {
 
     newWorkOrder() {
         this.creatingWorkOrder = true;
-        this.workOrder = null;
+        this.workOrder = initWorkOrder();
         this.showWorkOrderDialog = true;
     }
 
     handleUpdateWorkOrder($event: any) {
         this._store.dispatch(updateWorkOrder({ val: $event }));
+    }
+
+    handleCreateWorkOrder($event: any) {
+        this._store.dispatch(createWorkOrder({ val: $event }));
     }
 }

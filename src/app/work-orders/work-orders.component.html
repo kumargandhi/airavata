@@ -25,22 +25,22 @@
     >
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="tradeName" style="width: 30%">
+                <th pSortableColumn="tradeName" style="width: 40%">
                     Trade name <p-sortIcon field="tradeName"></p-sortIcon>
                 </th>
                 <th pSortableColumn="creationDate" style="width: 15%">
                     Created <p-sortIcon field="creationDate"></p-sortIcon>
                 </th>
-                <th pSortableColumn="estimation" style="width: 24%">
+                <th pSortableColumn="estimation" style="width: 15%">
                     Estimation <p-sortIcon field="estimation"></p-sortIcon>
                 </th>
-                <th pSortableColumn="priority" style="width: 16%">
+                <th pSortableColumn="priority" style="width: 12%">
                     Priority <p-sortIcon field="priority"></p-sortIcon>
                 </th>
-                <th pSortableColumn="status" style="width: 16%">
+                <th pSortableColumn="status" style="width: 12%">
                     Status <p-sortIcon field="status"></p-sortIcon>
                 </th>
-                <th style="width: 10%"></th>
+                <th style="width: 6%"></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-wo>
@@ -99,6 +99,7 @@
                 #addEditWOComponent
                 [workOrder]="workOrder"
                 (updateWorkOrder)="handleUpdateWorkOrder($event)"
+                (createWorkOrder)="handleCreateWorkOrder($event)"
                 [creatingWorkOrder]="creatingWorkOrder"
             ></app-add-edit-work-order>
         </ng-template>

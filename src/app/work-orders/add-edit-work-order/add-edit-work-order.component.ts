@@ -6,10 +6,14 @@ import {
     Input,
     EventEmitter,
     Output,
+    AfterViewInit,
 } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { IWorkOrder } from 'src/app/common/interfaces/work-order.interface';
 import { DestroyService } from 'src/app/common/services/destroy.service';
+import { WORK_ORDER_WIZARD_STEPS_MENU } from 'src/app/main/constants';
+import { cloneDeep } from 'lodash';
+import { convertWorkOrderDatesToTimeStamps } from 'src/app/common/utils';
 
 @Component({
     selector: 'app-add-edit-work-order',
@@ -18,7 +22,7 @@ import { DestroyService } from 'src/app/common/services/destroy.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DestroyService],
 })
-export class AddEditWorkOrderComponent implements OnInit {
+export class AddEditWorkOrderComponent implements OnInit, AfterViewInit {
     _workOrder: IWorkOrder;
 
     steps: MenuItem[];
@@ -32,42 +36,31 @@ export class AddEditWorkOrderComponent implements OnInit {
     @Output()
     updateWorkOrder: EventEmitter<IWorkOrder> = new EventEmitter();
 
+    @Output()
+    createWorkOrder: EventEmitter<IWorkOrder> = new EventEmitter();
+
     @Input()
     creatingWorkOrder: boolean;
 
     constructor(
         private _destroy$: DestroyService,
         private _cd: ChangeDetectorRef
-    ) {
-        this.steps = [
-            {
-                label: 'Details',
-                id: 'details',
-                tabindex: '0',
-            },
-            {
-                label: 'Estimate',
-                id: 'estimate',
-                tabindex: '1',
-            },
-            {
-                label: 'Action',
-                id: 'action',
-                tabindex: '2',
-            },
-            {
-                label: 'Summary',
-                id: 'summary',
-                tabindex: '3',
-            },
-        ];
-    }
+    ) {}
 
     @Input() set workOrder(value: IWorkOrder) {
         this._workOrder = value;
     }
 
     ngOnInit(): void {}
+
+    ngAfterViewInit(): void {
+        if (this.creatingWorkOrder) {
+            const menu = cloneDeep(WORK_ORDER_WIZARD_STEPS_MENU);
+            this.steps = menu.filter((item) => item.tabindex !== '2');
+        } else {
+            this.steps = WORK_ORDER_WIZARD_STEPS_MENU;
+        }
+    }
 
     activeIndexChanged($event: any) {
         console.log($event);
@@ -84,8 +77,17 @@ export class AddEditWorkOrderComponent implements OnInit {
         if (!this.isLastStep) {
             this.toggleButtons();
         } else {
-            // Update the work order
-            this.updateWorkOrder.emit(this._workOrder);
+            if (this.creatingWorkOrder) {
+                // Create work order
+                this.createWorkOrder.emit(
+                    convertWorkOrderDatesToTimeStamps(this._workOrder)
+                );
+            } else {
+                // Update the work order
+                this.updateWorkOrder.emit(
+                    convertWorkOrderDatesToTimeStamps(this._workOrder)
+                );
+            }
         }
         this._cd.markForCheck();
     }
@@ -99,12 +101,22 @@ export class AddEditWorkOrderComponent implements OnInit {
             this.isPreviousBtnDisabled = false;
             this.isNextBtnDisabled = false;
         }
-        if (this.activeStepIndex === 3) {
-            this.isPreviousBtnDisabled = false;
-            this.isNextBtnDisabled = true;
-            // For submit enable
-            this.isLastStep = true;
-            this.isNextBtnDisabled = false;
+        if (this.creatingWorkOrder) {
+            if (this.activeStepIndex === 2) {
+                this.isPreviousBtnDisabled = false;
+                this.isNextBtnDisabled = true;
+                // For submit enable
+                this.isLastStep = true;
+                this.isNextBtnDisabled = false;
+            }
+        } else {
+            if (this.activeStepIndex === 3) {
+                this.isPreviousBtnDisabled = false;
+                this.isNextBtnDisabled = true;
+                // For submit enable
+                this.isLastStep = true;
+                this.isNextBtnDisabled = false;
+            }
         }
     }
 }
