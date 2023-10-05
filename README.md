@@ -15,14 +15,21 @@ Read more about Firebase [here](https://developers.google.com/codelabs/building-
 ![SignUp](https://kumargandhi.github.io/assets/airavata/screenshots/signUp.png)
 
 ### Dashboard
-* Shows totals widget and work orders widget.
+* Shows totals widget and work orders by priorities widget.
 
 ![Dashboard](https://kumargandhi.github.io/assets/airavata/screenshots/dashboard.png)
 
 ### Work Orders
-* Create an easy work order online.
+* Create a simple work order online.
 
+Work Orders
 ![Work Orders](https://kumargandhi.github.io/assets/airavata/screenshots/workOrders.png)
+
+Add Work Order
+![Work Orders](https://kumargandhi.github.io/assets/airavata/screenshots/addWorkOrder.png)
+
+Update Work Order
+![Work Orders](https://kumargandhi.github.io/assets/airavata/screenshots/updateWorkOrder.png)
 
 ### Work Permits
 -TODO-
