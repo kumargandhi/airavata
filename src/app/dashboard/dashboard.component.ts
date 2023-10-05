@@ -67,8 +67,8 @@ export class DashboardComponent implements OnInit {
             datasets: [
                 {
                     data: chartData,
-                    backgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
-                    hoverBackgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+                    backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384'],
+                    hoverBackgroundColor: ['#36A2EB', '#FFCE56', '#FF6384'],
                 },
             ],
         };
