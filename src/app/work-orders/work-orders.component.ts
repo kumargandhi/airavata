@@ -22,7 +22,7 @@ import {
 } from '../common/state/actions/work-order.actions';
 import { DestroyService } from '../common/services/destroy.service';
 import { IWorkOrder } from '../common/interfaces/work-order.interface';
-import { PRIORITIES, STATUSES } from '../main/constants';
+import { PRIORITIES, STATES, STATUSES } from '../main/constants';
 import { AddEditWorkOrderComponent } from './add-edit-work-order/add-edit-work-order.component';
 import { convertWorkOrderTimeStampsToDates, initWorkOrder } from '../common/utils';
 
@@ -42,6 +42,7 @@ export class WorkOrdersComponent implements OnInit {
     @ViewChild('addEditWOComponent')
     addEditWOComponent: AddEditWorkOrderComponent;
     confirmationMessage = '';
+    states = STATES;
 
     constructor(
         private _destroy$: DestroyService,
@@ -63,15 +64,15 @@ export class WorkOrdersComponent implements OnInit {
                     this.workOrders = action.val;
                 } else if (action.type === UPDATED_WO) {
                     this.hideDialog();
-                    this._messageService.add({severity:'success', summary: 'Success', detail: 'Work Order updated successfully!'});
+                    this._messageService.add({severity:this.states.SUCCESS, summary: 'Success', detail: 'Work Order updated successfully!'});
                     this._store.dispatch(getWorkOrders());
                 } else if (action.type === CREATED_WO) {
                     this.hideDialog();
-                    this._messageService.add({severity:'success', summary: 'Success', detail: 'Work Order created successfully!'});
+                    this._messageService.add({severity:this.states.SUCCESS, summary: 'Success', detail: 'Work Order created successfully!'});
                     this._store.dispatch(getWorkOrders());
                 } else if (action.type === DELETED_WO) {
                     this.hideDialog();
-                    this._messageService.add({severity:'success', summary: 'Success', detail: 'Work Order deleted successfully!'});
+                    this._messageService.add({severity:this.states.SUCCESS, summary: 'Success', detail: 'Work Order deleted successfully!'});
                     this._store.dispatch(getWorkOrders());
                 }
                 this.loading = false;
@@ -81,21 +82,21 @@ export class WorkOrdersComponent implements OnInit {
 
     getPriorityTagClass(priority: string) {
         if (priority === PRIORITIES.High) {
-            return 'danger';
+            return this.states.DANGER;
         } else if (priority === PRIORITIES.Medium) {
-            return 'warning';
+            return this.states.WARNING;
         } else {
-            return 'info';
+            return this.states.INFO;
         }
     }
 
     getStatusTagClass(status: string) {
         if (status === STATUSES.Completed) {
-            return 'success';
+            return this.states.SUCCESS;
         } else if (status === STATUSES.Archived) {
-            return 'warning';
+            return this.states.WARNING;
         } else {
-            return 'info';
+            return this.states.INFO;
         }
     }
 

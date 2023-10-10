@@ -44,3 +44,10 @@ export const WORK_ORDER_WIZARD_STEPS_MENU = [
         tabindex: '3',
     },
 ];
+
+export enum STATES {
+    SUCCESS = 'success',
+    WARNING = 'warning',
+    DANGER = 'danger',
+    INFO = 'info'
+}
